@@ -50,13 +50,23 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
             <span className="font-bold">{formatPercentage(result.percentageChange)}%</span> спрямо 2025 г.
           </div>
 
-          <div className="pt-4 border-t border-danger-500/30">
-            <p className="text-zinc-400 text-sm md:text-base">
-              Годишна загуба
-            </p>
-            <p className="text-3xl md:text-4xl font-bold text-danger-400 mt-2">
-              {formatCurrency(Math.abs(result.annualNetSalaryDifference))} лв.
-            </p>
+          <div className="pt-4 border-t border-danger-500/30 space-y-4">
+            <div>
+              <p className="text-zinc-400 text-sm md:text-base">
+                Годишна загуба (служител)
+              </p>
+              <p className="text-3xl md:text-4xl font-bold text-danger-400 mt-2">
+                {formatCurrency(Math.abs(result.annualNetSalaryDifference))} лв.
+              </p>
+            </div>
+            <div>
+              <p className="text-zinc-400 text-sm md:text-base">
+                Годишна загуба (работодател)
+              </p>
+              <p className="text-3xl md:text-4xl font-bold text-orange-400 mt-2">
+                {formatCurrency(Math.abs(result.annualEmployerCostDifference))} лв.
+              </p>
+            </div>
           </div>
         </div>
       </div>
