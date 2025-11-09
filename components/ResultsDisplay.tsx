@@ -39,11 +39,11 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
       <div className="bg-gradient-to-br from-danger-950 to-black border-2 border-danger-500 rounded-2xl p-8 shadow-2xl shadow-danger-900/40">
         <div className="text-center space-y-4">
           <h2 className="text-xl md:text-2xl text-danger-300 font-semibold">
-            Вашата месечна загуба през 2026 година
+            Вашата годишна загуба през 2026 година
           </h2>
 
           <div className="text-5xl md:text-7xl font-black text-danger-500 animate-pulse-slow">
-            {formatCurrency(Math.abs(result.netSalaryDifference))} лв.
+            {formatCurrency(Math.abs(result.annualNetSalaryDifference))} лв.
           </div>
 
           <div className="text-lg md:text-xl text-danger-300">
@@ -53,15 +53,15 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
           <div className="pt-4 border-t border-danger-500/30 space-y-4">
             <div>
               <p className="text-zinc-400 text-sm md:text-base">
-                Годишна загуба (служител)
+                Месечна загуба за служителя
               </p>
               <p className="text-3xl md:text-4xl font-bold text-danger-400 mt-2">
-                {formatCurrency(Math.abs(result.annualNetSalaryDifference))} лв.
+                {formatCurrency(Math.abs(result.netSalaryDifference))} лв.
               </p>
             </div>
             <div>
               <p className="text-zinc-400 text-sm md:text-base">
-                Годишна загуба (работодател)
+                Годишна загуба за работодателя
               </p>
               <p className="text-3xl md:text-4xl font-bold text-orange-400 mt-2">
                 {formatCurrency(Math.abs(result.annualEmployerCostDifference))} лв.
