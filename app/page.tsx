@@ -176,6 +176,22 @@ export default function Home() {
                 </a>
               </p>
             </div>
+            <div className="mt-4 pt-4 border-t border-zinc-900">
+              <p className="text-xs text-zinc-600">
+                📂 Този проект е с отворен код (Open Source)
+              </p>
+              <p className="text-xs text-zinc-700 mt-1">
+                Разгледайте кода и допринесете в{' '}
+                <a
+                  href="https://github.com/encorp-io/kakvo-mi-vzimat"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-600 hover:text-zinc-500 underline transition-colors"
+                >
+                  GitHub хранилището
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </footer>
