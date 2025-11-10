@@ -400,7 +400,7 @@ export default function Home() {
               <p className="text-xs text-zinc-700 mt-1">
                 Разгледайте кода и допринесете в{' '}
                 <a
-                  href="https://github.com/encorp-io/kakvo-mi-vzimat"
+                  href="https://github.com/zaplata2026/website"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-600 hover:text-zinc-500 underline transition-colors"
