@@ -1,0 +1,21 @@
+# robots.txt for zaplata2026.com
+# Калкулатор Заплата 2026 България
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://zaplata2026.com/sitemap.xml
+
+# Block common bots that don't respect robots.txt
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
