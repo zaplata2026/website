@@ -7,6 +7,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://zaplata2026.com'),
   title: "Калкулатор Заплата 2026 България | Изчисли Нетна Заплата и Данъци",
   description: "Най-точният калкулатор за заплата 2026 в България. Изчислете нетна заплата, данъци, осигуровки и загубата от новите данъчни промени. Безплатен онлайн калкулатор за брутна и чиста заплата.",
   keywords: [
@@ -36,6 +37,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "bg_BG",
     siteName: "Какво ми взима държавата - Калкулатор Заплата 2026",
+    url: "https://zaplata2026.com",
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Калкулатор Заплата 2026 България',
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
