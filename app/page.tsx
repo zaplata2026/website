@@ -1,4 +1,5 @@
 import { SalaryCalculatorForm } from '@/components/SalaryCalculatorForm';
+import { Analytics } from "@vercel/analytics/next";
 
 /**
  * Home page component
@@ -412,6 +413,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <Analytics />
     </main>
   );
 }
