@@ -24,13 +24,11 @@ export default async function Image() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#09090b',
-          backgroundImage: 'radial-gradient(circle at 25px 25px, #27272a 2%, transparent 0%), radial-gradient(circle at 75px 75px, #27272a 2%, transparent 0%)',
-          backgroundSize: '100px 100px',
-          padding: '40px',
+          background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%)',
+          padding: '60px',
         }}
       >
-        {/* Main content container */}
+        {/* Main content container with red accent border */}
         <div
           style={{
             display: 'flex',
@@ -38,70 +36,182 @@ export default async function Image() {
             alignItems: 'center',
             justifyContent: 'center',
             textAlign: 'center',
-            backgroundColor: '#18181b',
-            border: '2px solid #27272a',
-            borderRadius: '24px',
-            padding: '60px 80px',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+            background: 'linear-gradient(180deg, #1f1f1f 0%, #141414 100%)',
+            border: '4px solid #ef4444',
+            borderRadius: '32px',
+            padding: '70px 90px',
+            boxShadow: '0 0 80px rgba(239, 68, 68, 0.4), 0 30px 60px rgba(0, 0, 0, 0.8)',
+            width: '100%',
+            maxWidth: '1080px',
           }}
         >
-          {/* Title */}
+          {/* Badge */}
           <div
             style={{
-              fontSize: 72,
+              backgroundColor: '#ef4444',
+              color: '#ffffff',
+              fontSize: 28,
               fontWeight: 'bold',
-              color: '#fafafa',
+              padding: '12px 32px',
+              borderRadius: '50px',
+              marginBottom: '30px',
+              display: 'flex',
+              boxShadow: '0 0 30px rgba(239, 68, 68, 0.6)',
+            }}
+          >
+            НОВИ ДАНЪЦИ 2026
+          </div>
+
+          {/* Main Title with red accent */}
+          <div
+            style={{
+              fontSize: 82,
+              fontWeight: 900,
+              background: 'linear-gradient(135deg, #ffffff 0%, #ef4444 100%)',
+              backgroundClip: 'text',
+              color: 'transparent',
+              marginBottom: '16px',
+              letterSpacing: '-0.03em',
+              display: 'flex',
+              lineHeight: 1.1,
+            }}
+          >
+            Калкулатор Заплата
+          </div>
+
+          {/* Year in bold red */}
+          <div
+            style={{
+              fontSize: 96,
+              fontWeight: 900,
+              color: '#ef4444',
               marginBottom: '20px',
               letterSpacing: '-0.02em',
               display: 'flex',
+              textShadow: '0 0 40px rgba(239, 68, 68, 0.5)',
             }}
           >
-            Калкулатор Заплата 2026
+            2026
           </div>
 
-          {/* Subtitle */}
+          {/* Subtitle with emphasis */}
           <div
             style={{
-              fontSize: 36,
-              color: '#a1a1aa',
-              marginBottom: '40px',
+              fontSize: 42,
+              fontWeight: 600,
+              color: '#fafafa',
+              marginBottom: '50px',
               display: 'flex',
+              letterSpacing: '-0.01em',
             }}
           >
             Какво ми взима държавата?
           </div>
 
-          {/* Features */}
+          {/* Stats/Features in horizontal layout */}
           <div
             style={{
               display: 'flex',
               flexDirection: 'row',
-              gap: '40px',
-              fontSize: 24,
-              color: '#71717a',
+              gap: '50px',
+              marginBottom: '40px',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <span style={{ color: '#22c55e', marginRight: '8px' }}>✓</span>
-              Данъци и осигуровки
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 48,
+                  fontWeight: 'bold',
+                  color: '#ef4444',
+                  display: 'flex',
+                }}
+              >
+                📊
+              </div>
+              <div
+                style={{
+                  fontSize: 22,
+                  color: '#d1d5db',
+                  display: 'flex',
+                }}
+              >
+                Данъци
+              </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <span style={{ color: '#22c55e', marginRight: '8px' }}>✓</span>
-              Годишна загуба
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 48,
+                  fontWeight: 'bold',
+                  color: '#ef4444',
+                  display: 'flex',
+                }}
+              >
+                💰
+              </div>
+              <div
+                style={{
+                  fontSize: 22,
+                  color: '#d1d5db',
+                  display: 'flex',
+                }}
+              >
+                Осигуровки
+              </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <span style={{ color: '#22c55e', marginRight: '8px' }}>✓</span>
-              Актуални ставки
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 48,
+                  fontWeight: 'bold',
+                  color: '#ef4444',
+                  display: 'flex',
+                }}
+              >
+                📉
+              </div>
+              <div
+                style={{
+                  fontSize: 22,
+                  color: '#d1d5db',
+                  display: 'flex',
+                }}
+              >
+                Загуба
+              </div>
             </div>
           </div>
 
-          {/* URL */}
+          {/* URL with red accent */}
           <div
             style={{
-              fontSize: 28,
-              color: '#52525b',
-              marginTop: '50px',
+              fontSize: 34,
+              fontWeight: 'bold',
+              color: '#ef4444',
+              marginTop: '20px',
               display: 'flex',
+              letterSpacing: '0.02em',
             }}
           >
             zaplata2026.com
