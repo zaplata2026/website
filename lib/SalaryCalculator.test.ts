@@ -31,14 +31,19 @@ describe('SalaryCalculator', () => {
     test('2026 configuration should have correct values', () => {
       expect(TAX_CONFIG_2026.year).toBe(2026);
       expect(TAX_CONFIG_2026.maxInsurableIncome).toBe(4600);
-      expect(TAX_CONFIG_2026.employee.pension).toBe(0.0738); // 6.58% + 0.8%
-      expect(TAX_CONFIG_2026.employer.pension).toBe(0.0944);
+      expect(TAX_CONFIG_2026.employee.pension).toBe(0.0747); // 6.58% + 0.89%
+      expect(TAX_CONFIG_2026.employer.pension).toBe(0.0933); // 8.22% + 1.11%
       expect(TAX_CONFIG_2026.incomeTaxRate).toBe(0.10);
     });
 
-    test('2026 pension contribution should be 0.8% higher than 2025', () => {
+    test('2026 pension contribution should be 0.89% higher for employee than 2025', () => {
       const difference = TAX_CONFIG_2026.employee.pension - TAX_CONFIG_2025.employee.pension;
-      expect(Math.round(difference * 10000) / 10000).toBe(0.008);
+      expect(Math.round(difference * 10000) / 10000).toBe(0.0089);
+    });
+
+    test('2026 pension contribution should be 1.11% higher for employer than 2025', () => {
+      const difference = TAX_CONFIG_2026.employer.pension - TAX_CONFIG_2025.employer.pension;
+      expect(Math.round(difference * 10000) / 10000).toBe(0.0111);
     });
   });
 
@@ -107,16 +112,16 @@ describe('SalaryCalculator', () => {
       const result = calculator.calculateNetFromGross(grossSalary, TAX_CONFIG_2026);
 
       // Calculate expected values with 2026 rates
-      const totalContributionRate = 0.0738 + 0.014 + 0.004 + 0.022 + 0.032; // 0.1458
-      const expectedContributions = grossSalary * totalContributionRate; // 437.4
-      const expectedTaxableIncome = grossSalary - expectedContributions; // 2562.6
-      const expectedTax = expectedTaxableIncome * 0.10; // 256.26
-      const expectedNet = expectedTaxableIncome - expectedTax; // 2306.34
+      const totalContributionRate = 0.0747 + 0.014 + 0.004 + 0.022 + 0.032; // 0.1467
+      const expectedContributions = grossSalary * totalContributionRate; // 440.1
+      const expectedTaxableIncome = grossSalary - expectedContributions; // 2559.9
+      const expectedTax = expectedTaxableIncome * 0.10; // 255.99
+      const expectedNet = expectedTaxableIncome - expectedTax; // 2303.91
 
       expect(result.grossSalary).toBe(3000);
-      expect(result.totalEmployeeContributions).toBeCloseTo(437.4, 1);
-      expect(result.incomeTax).toBeCloseTo(256.26, 1);
-      expect(result.netSalary).toBeCloseTo(2306.34, 1);
+      expect(result.totalEmployeeContributions).toBeCloseTo(440.1, 1);
+      expect(result.incomeTax).toBeCloseTo(255.99, 1);
+      expect(result.netSalary).toBeCloseTo(2303.91, 1);
     });
 
     test('should handle max insurable income increase in 2026', () => {

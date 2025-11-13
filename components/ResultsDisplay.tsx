@@ -168,7 +168,7 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
               <div className="space-y-2 text-sm">
                 <div className="font-semibold text-danger-400 mb-3">2026 година</div>
                 <div className="flex justify-between">
-                  <span className="text-zinc-400">Пенсии (7.38%):</span>
+                  <span className="text-zinc-400">Пенсии (7.47%):</span>
                   <span className="text-white font-mono">{formatCurrency(result.year2026.employeeContributions.pension)} лв.</span>
                 </div>
                 <div className="flex justify-between">
@@ -242,7 +242,7 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
               <div className="space-y-2 text-sm">
                 <div className="font-semibold text-danger-400 mb-3">2026 година</div>
                 <div className="flex justify-between">
-                  <span className="text-zinc-400">Пенсии (9.44%):</span>
+                  <span className="text-zinc-400">Пенсии (9.33%):</span>
                   <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.pension)} лв.</span>
                 </div>
                 <div className="flex justify-between">
