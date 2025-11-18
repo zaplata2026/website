@@ -10,6 +10,9 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
+  "engines": {
+    "node": "^18.0.0"
+  },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
     "next": "^15.0.0",
