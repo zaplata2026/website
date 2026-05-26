@@ -1,5 +1,6 @@
 import { SalaryCalculatorForm } from '@/components/SalaryCalculatorForm';
 import { Analytics } from "@vercel/analytics/next";
+import Link from 'next/link';
 
 /**
  * Home page component
@@ -20,7 +21,7 @@ export default function Home() {
     offers: {
       '@type': 'Offer',
       price: '0',
-      priceCurrency: 'BGN',
+      priceCurrency: 'EUR',
     },
     inLanguage: 'bg-BG',
     countryOfOrigin: {
@@ -60,7 +61,7 @@ export default function Home() {
         name: 'Какви са данъчните промени през 2026 година?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'През 2026 година има три основни промени: 1) Максималният осигурителен доход се увеличава от 4,130 лв. на 4,600 лв., 2) Пенсионните осигуровки за служителя се увеличават от 6.58% на 7.47%, 3) Пенсионните осигуровки за работодателя се увеличават от 8.22% на 9.33%.'
+          text: 'През 2026 година има три основни промени: 1) Максималният осигурителен доход се увеличава от 2,111.46 EUR на 2,300 EUR, 2) Пенсионните осигуровки за служителя се увеличават от 6.58% на 7.47%, 3) Пенсионните осигуровки за работодателя се увеличават от 8.22% на 9.33%.'
         }
       },
       {
@@ -68,7 +69,7 @@ export default function Home() {
         name: 'Колко е максималният осигурителен доход за 2026?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Максималният осигурителен доход за 2026 година е 4,600 лв. брутна заплата, увеличение от предишните 4,130 лв. за 2025 година.'
+          text: 'Максималният осигурителен доход за 2026 година е 2,300 EUR брутна заплата, увеличение от предишните 2,111.46 EUR за 2025 година.'
         }
       },
       {
@@ -126,12 +127,22 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-danger-900/30 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
-          <h1 className="text-2xl md:text-3xl font-black text-center bg-gradient-to-r from-danger-500 via-orange-500 to-danger-600 bg-clip-text text-transparent">
-            Калкулатор Заплата 2026 България
-          </h1>
-          <p className="text-center text-zinc-400 text-sm md:text-base mt-1">
-            Изчислете нетна заплата, данъци и осигуровки за 2026 година
-          </p>
+          <div className="flex items-center justify-between">
+            <div className="flex-1">
+              <h1 className="text-2xl md:text-3xl font-black text-center bg-gradient-to-r from-danger-500 via-orange-500 to-danger-600 bg-clip-text text-transparent">
+                Калкулатор Заплата 2026 България
+              </h1>
+              <p className="text-center text-zinc-400 text-sm md:text-base mt-1">
+                Изчислете нетна заплата, данъци и осигуровки за 2026 година
+              </p>
+            </div>
+            <Link
+              href="/calculator"
+              className="hidden md:block text-sm text-zinc-400 hover:text-white transition-colors px-4 py-2 rounded-lg border border-zinc-700 hover:border-zinc-600 whitespace-nowrap"
+            >
+              Универсален калкулатор →
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -154,36 +165,55 @@ export default function Home() {
         <SalaryCalculatorForm />
 
         {/* Info Section */}
-        <div className="mt-16 grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
-            <div className="text-3xl mb-3">📈</div>
-            <h3 className="text-lg font-bold text-white mb-2">
-              Точни изчисления
-            </h3>
-            <p className="text-sm text-zinc-400">
-              Базирани на официалните данъчни ставки за 2025 и 2026 година
-            </p>
+        <div className="mt-16 space-y-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
+              <div className="text-3xl mb-3">📈</div>
+              <h3 className="text-lg font-bold text-white mb-2">
+                Точни изчисления
+              </h3>
+              <p className="text-sm text-zinc-400">
+                Базирани на официалните данъчни ставки за 2025 и 2026 година
+              </p>
+            </div>
+
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
+              <div className="text-3xl mb-3">💼</div>
+              <h3 className="text-lg font-bold text-white mb-2">
+                Разходи за работодател
+              </h3>
+              <p className="text-sm text-zinc-400">
+                Вижте как новите данъци засягат и разходите на вашия работодател
+              </p>
+            </div>
+
+            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
+              <div className="text-3xl mb-3">🛒</div>
+              <h3 className="text-lg font-bold text-white mb-2">
+                Покупателна способност
+              </h3>
+              <p className="text-sm text-zinc-400">
+                Разберете с колко по-малко продукти ще можете да си купите
+              </p>
+            </div>
           </div>
 
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
-            <div className="text-3xl mb-3">💼</div>
+          {/* Link to Universal Calculator */}
+          <Link
+            href="/calculator"
+            className="block bg-gradient-to-r from-zinc-800 to-zinc-900 border-2 border-danger-500/30 hover:border-danger-500 rounded-xl p-6 text-center transition-all hover:shadow-lg hover:shadow-danger-500/20"
+          >
+            <div className="text-3xl mb-3">🔄</div>
             <h3 className="text-lg font-bold text-white mb-2">
-              Разходи за работодател
+              Универсален Калкулатор
             </h3>
-            <p className="text-sm text-zinc-400">
-              Вижте как новите данъци засягат и разходите на вашия работодател
+            <p className="text-sm text-zinc-400 mb-3">
+              Изчислете нетна от брутна, брутна от нетна или разход за работодател с настройваеми параметри
             </p>
-          </div>
-
-          <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 text-center">
-            <div className="text-3xl mb-3">🛒</div>
-            <h3 className="text-lg font-bold text-white mb-2">
-              Покупателна способност
-            </h3>
-            <p className="text-sm text-zinc-400">
-              Разберете с колко по-малко продукти ще можете да си купите
-            </p>
-          </div>
+            <span className="text-danger-400 font-semibold text-sm">
+              Отвори калкулатора →
+            </span>
+          </Link>
         </div>
 
         {/* Tax Changes Explanation */}
@@ -198,8 +228,8 @@ export default function Home() {
               <div>
                 <p className="font-semibold text-white">Максимален осигурителен доход</p>
                 <p className="text-sm text-zinc-400">
-                  Увеличава се от <span className="text-white font-mono">4,130 лв.</span> на{' '}
-                  <span className="text-danger-400 font-mono">4,600 лв.</span> (брутна заплата)
+                  Увеличава се от <span className="text-white font-mono">2,111.46 EUR</span> на{' '}
+                  <span className="text-danger-400 font-mono">2,300 EUR</span> (брутна заплата)
                 </p>
               </div>
             </div>
@@ -289,7 +319,7 @@ export default function Home() {
               </summary>
               <p className="mt-4 text-zinc-400 leading-relaxed">
                 През 2026 година има три основни промени: 1) Максималният осигурителен доход се увеличава от
-                4,130 лв. на 4,600 лв., 2) Пенсионните осигуровки за служителя се увеличават от 6.58% на 7.47%
+                2,111.46 EUR на 2,300 EUR, 2) Пенсионните осигуровки за служителя се увеличават от 6.58% на 7.47%
                 (+0.89%), 3) Пенсионните осигуровки за работодателя се увеличават от 8.22% на 9.33% (+1.11%).
                 Тези промени водят до по-малка нетна заплата за служителите.
               </p>
@@ -302,8 +332,8 @@ export default function Home() {
                 <span className="text-danger-500 group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="mt-4 text-zinc-400 leading-relaxed">
-                Максималният осигурителен доход за 2026 година е <strong className="text-white">4,600 лв.</strong> брутна
-                заплата, което е увеличение от предишните 4,130 лв. за 2025 година. Това означава, че хора с по-високи
+                Максималният осигурителен доход за 2026 година е <strong className="text-white">2,300 EUR</strong> брутна
+                заплата, което е увеличение от предишните 2,111.46 EUR за 2025 година. Това означава, че хора с по-високи
                 заплати ще плащат повече осигуровки до този нов максимум.
               </p>
             </details>
@@ -344,7 +374,7 @@ export default function Home() {
               </summary>
               <p className="mt-4 text-zinc-400 leading-relaxed">
                 Нетната заплата през 2026 е по-ниска поради увеличението на пенсионните осигуровки с 0.89% и
-                повишаването на максималния осигурителен доход до 4,600 лв. Това означава, че от вашата брутна заплата
+                повишаването на максималния осигурителен доход до 2,300 EUR. Това означава, че от вашата брутна заплата
                 се удържат повече пари за осигуровки, което води до по-малка чиста заплата.
               </p>
             </details>

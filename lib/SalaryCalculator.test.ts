@@ -22,7 +22,7 @@ describe('SalaryCalculator', () => {
   describe('Tax Configuration', () => {
     test('2025 configuration should have correct values', () => {
       expect(TAX_CONFIG_2025.year).toBe(2025);
-      expect(TAX_CONFIG_2025.maxInsurableIncome).toBe(4130);
+      expect(TAX_CONFIG_2025.maxInsurableIncome).toBe(2111.46);
       expect(TAX_CONFIG_2025.employee.pension).toBe(0.0658);
       expect(TAX_CONFIG_2025.employer.pension).toBe(0.0822);
       expect(TAX_CONFIG_2025.incomeTaxRate).toBe(0.10);
@@ -30,7 +30,7 @@ describe('SalaryCalculator', () => {
 
     test('2026 configuration should have correct values', () => {
       expect(TAX_CONFIG_2026.year).toBe(2026);
-      expect(TAX_CONFIG_2026.maxInsurableIncome).toBe(4600);
+      expect(TAX_CONFIG_2026.maxInsurableIncome).toBe(2300);
       expect(TAX_CONFIG_2026.employee.pension).toBe(0.0747); // 6.58% + 0.89%
       expect(TAX_CONFIG_2026.employer.pension).toBe(0.0933); // 8.22% + 1.11%
       expect(TAX_CONFIG_2026.incomeTaxRate).toBe(0.10);
@@ -49,99 +49,99 @@ describe('SalaryCalculator', () => {
 
   describe('calculateNetFromGross', () => {
     test('should calculate net salary correctly for salary below max insurable income (2025)', () => {
-      const grossSalary = 3000;
+      const grossSalary = 1500;
       const result = calculator.calculateNetFromGross(grossSalary, TAX_CONFIG_2025);
 
       // Calculate expected values
       const totalContributionRate = 0.0658 + 0.014 + 0.004 + 0.022 + 0.032; // 0.1378
-      const expectedContributions = grossSalary * totalContributionRate; // 413.4
-      const expectedTaxableIncome = grossSalary - expectedContributions; // 2586.6
-      const expectedTax = expectedTaxableIncome * 0.10; // 258.66
-      const expectedNet = expectedTaxableIncome - expectedTax; // 2327.94
+      const expectedContributions = grossSalary * totalContributionRate; // 206.7
+      const expectedTaxableIncome = grossSalary - expectedContributions; // 1293.3
+      const expectedTax = expectedTaxableIncome * 0.10; // 129.33
+      const expectedNet = expectedTaxableIncome - expectedTax; // 1163.97
 
-      expect(result.grossSalary).toBe(3000);
-      expect(result.totalEmployeeContributions).toBeCloseTo(413.4, 1);
-      expect(result.incomeTax).toBeCloseTo(258.66, 1);
-      expect(result.netSalary).toBeCloseTo(2327.94, 1);
+      expect(result.grossSalary).toBe(1500);
+      expect(result.totalEmployeeContributions).toBeCloseTo(206.7, 1);
+      expect(result.incomeTax).toBeCloseTo(129.33, 1);
+      expect(result.netSalary).toBeCloseTo(1163.97, 1);
     });
 
     test('should calculate net salary correctly for salary above max insurable income (2025)', () => {
-      const grossSalary = 5000;
+      const grossSalary = 2500;
       const result = calculator.calculateNetFromGross(grossSalary, TAX_CONFIG_2025);
 
-      // Contributions are capped at 4130
-      const contributionBase = 4130;
+      // Contributions are capped at 2111.46
+      const contributionBase = 2111.46;
       const totalContributionRate = 0.0658 + 0.014 + 0.004 + 0.022 + 0.032; // 0.1378
-      const expectedContributions = contributionBase * totalContributionRate; // 569.114
-      const expectedTaxableIncome = grossSalary - expectedContributions; // 4430.886
-      const expectedTax = expectedTaxableIncome * 0.10; // 443.0886
-      const expectedNet = expectedTaxableIncome - expectedTax; // 3987.7974
+      const expectedContributions = contributionBase * totalContributionRate; // 290.96
+      const expectedTaxableIncome = grossSalary - expectedContributions; // 2209.04
+      const expectedTax = expectedTaxableIncome * 0.10; // 220.904
+      const expectedNet = expectedTaxableIncome - expectedTax; // 1988.14
 
-      expect(result.grossSalary).toBe(5000);
-      expect(result.totalEmployeeContributions).toBeCloseTo(569.11, 1);
-      expect(result.incomeTax).toBeCloseTo(443.09, 1);
-      expect(result.netSalary).toBeCloseTo(3987.80, 1);
+      expect(result.grossSalary).toBe(2500);
+      expect(result.totalEmployeeContributions).toBeCloseTo(290.96, 1);
+      expect(result.incomeTax).toBeCloseTo(220.90, 1);
+      expect(result.netSalary).toBeCloseTo(1988.14, 1);
     });
 
     test('should calculate employer contributions correctly (2025)', () => {
-      const grossSalary = 3000;
+      const grossSalary = 1500;
       const result = calculator.calculateNetFromGross(grossSalary, TAX_CONFIG_2025);
 
       // Employer contributions
-      const expectedPension = 3000 * 0.0822; // 246.6
-      const expectedSickness = 3000 * 0.021; // 63
-      const expectedUnemployment = 3000 * 0.006; // 18
-      const expectedSupplementary = 3000 * 0.028; // 84
-      const expectedOccupational = 3000 * 0.004; // 12
-      const expectedHealth = 3000 * 0.048; // 144
+      const expectedPension = 1500 * 0.0822; // 123.3
+      const expectedSickness = 1500 * 0.021; // 31.5
+      const expectedUnemployment = 1500 * 0.006; // 9
+      const expectedSupplementary = 1500 * 0.028; // 42
+      const expectedOccupational = 1500 * 0.004; // 6
+      const expectedHealth = 1500 * 0.048; // 72
 
-      expect(result.employerContributions.pension).toBeCloseTo(246.6, 1);
-      expect(result.employerContributions.sickness).toBeCloseTo(63, 1);
-      expect(result.employerContributions.unemployment).toBeCloseTo(18, 1);
-      expect(result.employerContributions.supplementaryPension).toBeCloseTo(84, 1);
-      expect(result.employerContributions.occupationalAccidents).toBeCloseTo(12, 1);
-      expect(result.employerContributions.health).toBeCloseTo(144, 1);
+      expect(result.employerContributions.pension).toBeCloseTo(123.3, 1);
+      expect(result.employerContributions.sickness).toBeCloseTo(31.5, 1);
+      expect(result.employerContributions.unemployment).toBeCloseTo(9, 1);
+      expect(result.employerContributions.supplementaryPension).toBeCloseTo(42, 1);
+      expect(result.employerContributions.occupationalAccidents).toBeCloseTo(6, 1);
+      expect(result.employerContributions.health).toBeCloseTo(72, 1);
 
-      const totalEmployer = 246.6 + 63 + 18 + 84 + 12 + 144; // 567.6
-      expect(result.totalEmployerContributions).toBeCloseTo(567.6, 1);
-      expect(result.totalEmployerCost).toBeCloseTo(3567.6, 1);
+      const totalEmployer = 123.3 + 31.5 + 9 + 42 + 6 + 72; // 283.8
+      expect(result.totalEmployerContributions).toBeCloseTo(283.8, 1);
+      expect(result.totalEmployerCost).toBeCloseTo(1783.8, 1);
     });
 
     test('should calculate net salary correctly for 2026 with new rates', () => {
-      const grossSalary = 3000;
+      const grossSalary = 1500;
       const result = calculator.calculateNetFromGross(grossSalary, TAX_CONFIG_2026);
 
       // Calculate expected values with 2026 rates
       const totalContributionRate = 0.0747 + 0.014 + 0.004 + 0.022 + 0.032; // 0.1467
-      const expectedContributions = grossSalary * totalContributionRate; // 440.1
-      const expectedTaxableIncome = grossSalary - expectedContributions; // 2559.9
-      const expectedTax = expectedTaxableIncome * 0.10; // 255.99
-      const expectedNet = expectedTaxableIncome - expectedTax; // 2303.91
+      const expectedContributions = grossSalary * totalContributionRate; // 220.05
+      const expectedTaxableIncome = grossSalary - expectedContributions; // 1279.95
+      const expectedTax = expectedTaxableIncome * 0.10; // 127.995
+      const expectedNet = expectedTaxableIncome - expectedTax; // 1151.955
 
-      expect(result.grossSalary).toBe(3000);
-      expect(result.totalEmployeeContributions).toBeCloseTo(440.1, 1);
-      expect(result.incomeTax).toBeCloseTo(255.99, 1);
-      expect(result.netSalary).toBeCloseTo(2303.91, 1);
+      expect(result.grossSalary).toBe(1500);
+      expect(result.totalEmployeeContributions).toBeCloseTo(220.05, 1);
+      expect(result.incomeTax).toBeCloseTo(127.99, 1);
+      expect(result.netSalary).toBeCloseTo(1151.96, 1);
     });
 
     test('should handle max insurable income increase in 2026', () => {
-      const grossSalary = 4500;
+      const grossSalary = 2250;
 
       const result2025 = calculator.calculateNetFromGross(grossSalary, TAX_CONFIG_2025);
       const result2026 = calculator.calculateNetFromGross(grossSalary, TAX_CONFIG_2026);
 
-      // In 2025, contributions are capped at 4130
-      // In 2026, contributions are capped at 4500 (below max of 4600)
+      // In 2025, contributions are capped at 2111.46
+      // In 2026, contributions are on full 2250 (below max of 2300)
       expect(result2025.totalEmployeeContributions).toBeLessThan(result2026.totalEmployeeContributions);
     });
   });
 
   describe('compareSalaryBetweenYears', () => {
-    test('should correctly compare salaries for 4000 BGN net in 2025', () => {
-      const comparison = calculator.compareSalaryBetweenYears(4000);
+    test('should correctly compare salaries for 2000 EUR net in 2025', () => {
+      const comparison = calculator.compareSalaryBetweenYears(2000);
 
       // Verify that gross salary is calculated correctly
-      expect(comparison.year2025.netSalary).toBeCloseTo(4000, 0);
+      expect(comparison.year2025.netSalary).toBeCloseTo(2000, 0);
 
       // Verify that the same gross salary yields less net in 2026
       expect(comparison.year2026.netSalary).toBeLessThan(comparison.year2025.netSalary);
@@ -156,16 +156,16 @@ describe('SalaryCalculator', () => {
       expect(comparison.percentageChange).toBeLessThan(0);
     });
 
-    test('should correctly compare salaries for 2000 BGN net in 2025', () => {
-      const comparison = calculator.compareSalaryBetweenYears(2000);
+    test('should correctly compare salaries for 1000 EUR net in 2025', () => {
+      const comparison = calculator.compareSalaryBetweenYears(1000);
 
-      expect(comparison.year2025.netSalary).toBeCloseTo(2000, 0);
+      expect(comparison.year2025.netSalary).toBeCloseTo(1000, 0);
       expect(comparison.year2026.netSalary).toBeLessThan(comparison.year2025.netSalary);
       expect(comparison.netSalaryDifference).toBeLessThan(0);
     });
 
     test('should correctly calculate employer cost differences', () => {
-      const comparison = calculator.compareSalaryBetweenYears(3000);
+      const comparison = calculator.compareSalaryBetweenYears(1500);
 
       // Employer costs should increase in 2026 due to higher pension contribution
       expect(comparison.year2026.totalEmployerCost).toBeGreaterThan(comparison.year2025.totalEmployerCost);
@@ -175,16 +175,16 @@ describe('SalaryCalculator', () => {
 
     test('should handle salaries at max insurable income threshold', () => {
       // Test at 2025 max threshold
-      const comparison1 = calculator.compareSalaryBetweenYears(3500);
+      const comparison1 = calculator.compareSalaryBetweenYears(2000);
       expect(comparison1.year2025.grossSalary).toBeGreaterThanOrEqual(TAX_CONFIG_2025.maxInsurableIncome);
 
       // Test at 2026 max threshold
-      const comparison2 = calculator.compareSalaryBetweenYears(3900);
+      const comparison2 = calculator.compareSalaryBetweenYears(2200);
       expect(comparison2.year2025.grossSalary).toBeGreaterThanOrEqual(TAX_CONFIG_2026.maxInsurableIncome);
     });
 
     test('should maintain calculation accuracy across different salary ranges', () => {
-      const testSalaries = [1000, 2000, 3000, 4000, 5000, 6000];
+      const testSalaries = [500, 1000, 1500, 2000, 2500, 3000];
 
       testSalaries.forEach((salary) => {
         const comparison = calculator.compareSalaryBetweenYears(salary);
@@ -203,36 +203,36 @@ describe('SalaryCalculator', () => {
 
   describe('calculateProductLoss', () => {
     test('should calculate correct number of lost products', () => {
-      const annualDifference = -1200; // Lost 1200 BGN per year
-      const breadPrice = 2.5;
+      const annualDifference = -600; // Lost 600 EUR per year
+      const breadPrice = 1.25;
 
       const lostBreads = calculator.calculateProductLoss(annualDifference, breadPrice);
-      expect(lostBreads).toBe(480); // 1200 / 2.5 = 480
+      expect(lostBreads).toBe(480); // 600 / 1.25 = 480
     });
 
     test('should handle different product prices', () => {
-      const annualDifference = -600;
+      const annualDifference = -300;
 
-      expect(calculator.calculateProductLoss(annualDifference, 3)).toBe(200);
-      expect(calculator.calculateProductLoss(annualDifference, 10)).toBe(60);
-      expect(calculator.calculateProductLoss(annualDifference, 25)).toBe(24);
+      expect(calculator.calculateProductLoss(annualDifference, 1.5)).toBe(200);
+      expect(calculator.calculateProductLoss(annualDifference, 5)).toBe(60);
+      expect(calculator.calculateProductLoss(annualDifference, 12.5)).toBe(24);
     });
 
     test('should floor the result (no partial products)', () => {
-      const annualDifference = -100;
-      const productPrice = 30;
+      const annualDifference = -50;
+      const productPrice = 15;
 
       const result = calculator.calculateProductLoss(annualDifference, productPrice);
-      expect(result).toBe(3); // 100 / 30 = 3.33... -> 3
+      expect(result).toBe(3); // 50 / 15 = 3.33... -> 3
     });
 
     test('should handle zero difference', () => {
-      expect(calculator.calculateProductLoss(0, 10)).toBe(0);
+      expect(calculator.calculateProductLoss(0, 5)).toBe(0);
     });
 
     test('should use absolute value of difference', () => {
-      expect(calculator.calculateProductLoss(-100, 10)).toBe(10);
-      expect(calculator.calculateProductLoss(100, 10)).toBe(10);
+      expect(calculator.calculateProductLoss(-50, 5)).toBe(10);
+      expect(calculator.calculateProductLoss(50, 5)).toBe(10);
     });
   });
 
@@ -240,13 +240,13 @@ describe('SalaryCalculator', () => {
     test('should return correct configuration for 2025', () => {
       const config = calculator.getConfig(2025);
       expect(config.year).toBe(2025);
-      expect(config.maxInsurableIncome).toBe(4130);
+      expect(config.maxInsurableIncome).toBe(2111.46);
     });
 
     test('should return correct configuration for 2026', () => {
       const config = calculator.getConfig(2026);
       expect(config.year).toBe(2026);
-      expect(config.maxInsurableIncome).toBe(4600);
+      expect(config.maxInsurableIncome).toBe(2300);
     });
   });
 
@@ -291,13 +291,13 @@ describe('SalaryCalculator', () => {
 
   describe('Edge Cases', () => {
     test('should handle very low salaries', () => {
-      const result = calculator.calculateNetFromGross(500, TAX_CONFIG_2025);
+      const result = calculator.calculateNetFromGross(250, TAX_CONFIG_2025);
       expect(result.netSalary).toBeGreaterThan(0);
-      expect(result.netSalary).toBeLessThan(500);
+      expect(result.netSalary).toBeLessThan(250);
     });
 
     test('should handle very high salaries', () => {
-      const result = calculator.calculateNetFromGross(10000, TAX_CONFIG_2025);
+      const result = calculator.calculateNetFromGross(5000, TAX_CONFIG_2025);
       expect(result.netSalary).toBeGreaterThan(0);
       expect(result.totalEmployeeContributions).toBe(
         Math.round(TAX_CONFIG_2025.maxInsurableIncome * 0.1378 * 100) / 100
@@ -305,55 +305,55 @@ describe('SalaryCalculator', () => {
     });
 
     test('should handle salary exactly at max insurable income', () => {
-      const result2025 = calculator.calculateNetFromGross(4130, TAX_CONFIG_2025);
-      const result2026 = calculator.calculateNetFromGross(4600, TAX_CONFIG_2026);
+      const result2025 = calculator.calculateNetFromGross(2111.46, TAX_CONFIG_2025);
+      const result2026 = calculator.calculateNetFromGross(2300, TAX_CONFIG_2026);
 
-      expect(result2025.grossSalary).toBe(4130);
-      expect(result2026.grossSalary).toBe(4600);
+      expect(result2025.grossSalary).toBe(2111.46);
+      expect(result2026.grossSalary).toBe(2300);
     });
   });
 
   describe('Real-world Scenarios', () => {
-    test('Scenario: Person earning 4000 BGN net in 2025', () => {
-      const comparison = calculator.compareSalaryBetweenYears(4000);
+    test('Scenario: Person earning 2000 EUR net in 2025', () => {
+      const comparison = calculator.compareSalaryBetweenYears(2000);
 
-      console.log('\n=== Сценарий: Човек с 4000 лв. нетна заплата през 2025 ===');
-      console.log(`Брутна заплата: ${comparison.year2025.grossSalary.toFixed(2)} лв.`);
-      console.log(`Нетна заплата 2025: ${comparison.year2025.netSalary.toFixed(2)} лв.`);
-      console.log(`Нетна заплата 2026: ${comparison.year2026.netSalary.toFixed(2)} лв.`);
-      console.log(`Месечна загуба: ${comparison.netSalaryDifference.toFixed(2)} лв.`);
-      console.log(`Годишна загуба: ${comparison.annualNetSalaryDifference.toFixed(2)} лв.`);
+      console.log('\n=== Сценарий: Човек с 2000 EUR нетна заплата през 2025 ===');
+      console.log(`Брутна заплата: ${comparison.year2025.grossSalary.toFixed(2)} EUR`);
+      console.log(`Нетна заплата 2025: ${comparison.year2025.netSalary.toFixed(2)} EUR`);
+      console.log(`Нетна заплата 2026: ${comparison.year2026.netSalary.toFixed(2)} EUR`);
+      console.log(`Месечна загуба: ${comparison.netSalaryDifference.toFixed(2)} EUR`);
+      console.log(`Годишна загуба: ${comparison.annualNetSalaryDifference.toFixed(2)} EUR`);
       console.log(`Процентна промяна: ${comparison.percentageChange.toFixed(2)}%`);
-      console.log(`Разход за работодател 2025: ${comparison.year2025.totalEmployerCost.toFixed(2)} лв.`);
-      console.log(`Разход за работодател 2026: ${comparison.year2026.totalEmployerCost.toFixed(2)} лв.`);
-      console.log(`Увеличение за работодател: ${comparison.employerCostDifference.toFixed(2)} лв./месец`);
+      console.log(`Разход за работодател 2025: ${comparison.year2025.totalEmployerCost.toFixed(2)} EUR`);
+      console.log(`Разход за работодател 2026: ${comparison.year2026.totalEmployerCost.toFixed(2)} EUR`);
+      console.log(`Увеличение за работодател: ${comparison.employerCostDifference.toFixed(2)} EUR/месец`);
 
-      expect(comparison.year2025.netSalary).toBeCloseTo(4000, 0);
+      expect(comparison.year2025.netSalary).toBeCloseTo(2000, 0);
       expect(comparison.netSalaryDifference).toBeLessThan(0);
     });
 
     test('Scenario: Minimum wage worker', () => {
-      const minWageNet = 933; // Approximate minimum wage net
+      const minWageNet = 477; // Approximate minimum wage net in EUR
       const comparison = calculator.compareSalaryBetweenYears(minWageNet);
 
       console.log('\n=== Сценарий: Работещ на минимална заплата ===');
-      console.log(`Нетна заплата 2025: ${comparison.year2025.netSalary.toFixed(2)} лв.`);
-      console.log(`Нетна заплата 2026: ${comparison.year2026.netSalary.toFixed(2)} лв.`);
-      console.log(`Месечна загуба: ${comparison.netSalaryDifference.toFixed(2)} лв.`);
+      console.log(`Нетна заплата 2025: ${comparison.year2025.netSalary.toFixed(2)} EUR`);
+      console.log(`Нетна заплата 2026: ${comparison.year2026.netSalary.toFixed(2)} EUR`);
+      console.log(`Месечна загуба: ${comparison.netSalaryDifference.toFixed(2)} EUR`);
 
       expect(comparison.year2025.netSalary).toBeCloseTo(minWageNet, 0);
     });
 
     test('Scenario: High earner above max insurable income', () => {
-      const highNetSalary = 5000;
+      const highNetSalary = 2500;
       const comparison = calculator.compareSalaryBetweenYears(highNetSalary);
 
       console.log('\n=== Сценарий: Високо платен служител ===');
-      console.log(`Брутна заплата: ${comparison.year2025.grossSalary.toFixed(2)} лв.`);
-      console.log(`Нетна заплата 2025: ${comparison.year2025.netSalary.toFixed(2)} лв.`);
-      console.log(`Нетна заплата 2026: ${comparison.year2026.netSalary.toFixed(2)} лв.`);
-      console.log(`Месечна загуба: ${comparison.netSalaryDifference.toFixed(2)} лв.`);
-      console.log(`Годишна загуба: ${comparison.annualNetSalaryDifference.toFixed(2)} лв.`);
+      console.log(`Брутна заплата: ${comparison.year2025.grossSalary.toFixed(2)} EUR`);
+      console.log(`Нетна заплата 2025: ${comparison.year2025.netSalary.toFixed(2)} EUR`);
+      console.log(`Нетна заплата 2026: ${comparison.year2026.netSalary.toFixed(2)} EUR`);
+      console.log(`Месечна загуба: ${comparison.netSalaryDifference.toFixed(2)} EUR`);
+      console.log(`Годишна загуба: ${comparison.annualNetSalaryDifference.toFixed(2)} EUR`);
 
       expect(comparison.year2025.grossSalary).toBeGreaterThan(TAX_CONFIG_2025.maxInsurableIncome);
     });

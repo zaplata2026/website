@@ -77,12 +77,12 @@ export function SalaryCalculatorForm() {
               inputMode="decimal"
               value={netSalary}
               onChange={handleInputChange}
-              placeholder="4000.00"
+              placeholder="2000.00"
               className="w-full px-6 py-4 text-2xl md:text-3xl font-bold text-center bg-black border-2 border-danger-500/50 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-danger-500 focus:ring-4 focus:ring-danger-500/20 transition-all"
               disabled={isCalculating}
             />
             <div className="absolute right-6 top-1/2 -translate-y-1/2 text-2xl md:text-3xl font-bold text-zinc-500">
-              лв.
+              EUR
             </div>
           </div>
 
@@ -113,7 +113,7 @@ export function SalaryCalculatorForm() {
             <p className="text-xs text-zinc-400 leading-relaxed">
               В България хората почти винаги имат информация за тяхната <strong className="text-white">нетна заплата</strong>.
               Но реално всички калкулации са върху <strong className="text-white">брутната им заплата</strong>.
-              От 2026 година максималният осигурителен доход се увеличава от 4,130 лв. на 4,600 лв.,
+              От 2026 година максималният осигурителен доход се увеличава от 2,111.46 EUR на 2,300 EUR,
               а пенсионните осигуровки се увеличават с 0.89% за служителя и 1.11% за работодателя. Калкулаторът показва колко по-малко пари
               ще получавате от 1 януари 2026.
             </p>

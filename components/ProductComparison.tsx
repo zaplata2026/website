@@ -18,16 +18,16 @@ interface Product {
  * Common Bulgarian products for comparison
  */
 const PRODUCTS: Product[] = [
-  { name: 'Хляб', emoji: '🍞', price: 2.0, unit: 'хляб' },
-  { name: 'Мляко', emoji: '🥛', price: 3.1, unit: 'литър' },
-  { name: 'Кафе', emoji: '☕', price: 2.5, unit: 'кафе' },
-  { name: 'Яйца', emoji: '🥚', price: 0.3, unit: 'яйце' },
-  { name: 'Бензин', emoji: '⛽', price: 2.6, unit: 'литър' },
-  { name: 'Козунак', emoji: '🥖', price: 8.0, unit: 'козунак' },
-  { name: 'Айрян', emoji: '🥤', price: 2.5, unit: 'бутилка' },
-  { name: 'Месо свинско', emoji: '🥩', price: 11.2, unit: 'кг' },
-  { name: 'Картофи', emoji: '🥔', price: 2.0, unit: 'кг' },
-  { name: 'Домати', emoji: '🍅', price: 4.3, unit: 'кг' },
+  { name: 'Хляб', emoji: '🍞', price: 1.02, unit: 'хляб' },
+  { name: 'Мляко', emoji: '🥛', price: 1.59, unit: 'литър' },
+  { name: 'Кафе', emoji: '☕', price: 1.28, unit: 'кафе' },
+  { name: 'Яйца', emoji: '🥚', price: 0.15, unit: 'яйце' },
+  { name: 'Бензин', emoji: '⛽', price: 1.33, unit: 'литър' },
+  { name: 'Козунак', emoji: '🥖', price: 4.09, unit: 'козунак' },
+  { name: 'Айрян', emoji: '🥤', price: 1.28, unit: 'бутилка' },
+  { name: 'Месо свинско', emoji: '🥩', price: 5.73, unit: 'кг' },
+  { name: 'Картофи', emoji: '🥔', price: 1.02, unit: 'кг' },
+  { name: 'Домати', emoji: '🍅', price: 2.20, unit: 'кг' },
 ];
 
 /**
@@ -57,7 +57,7 @@ export function ProductComparison({ annualDifference }: ProductComparisonProps) 
 
       <p className="text-zinc-400 text-sm md:text-base text-center mb-6">
         С годишната ви загуба от <span className="text-danger-400 font-bold">
-          {formatNumber(Math.abs(annualDifference))} лв.
+          {formatNumber(Math.abs(annualDifference))} EUR
         </span> бихте могли да си купите:
       </p>
 
@@ -77,7 +77,7 @@ export function ProductComparison({ annualDifference }: ProductComparisonProps) 
               >
                 <div className="text-3xl mb-1">{product.emoji}</div>
                 <div className="text-xs text-white font-semibold">{product.name}</div>
-                <div className="text-xs text-zinc-400">{product.price.toFixed(2)} лв.</div>
+                <div className="text-xs text-zinc-400">{product.price.toFixed(2)} EUR</div>
               </button>
             ))}
           </div>
@@ -100,7 +100,7 @@ export function ProductComparison({ annualDifference }: ProductComparisonProps) 
                 selectedProduct.unit}
             </div>
             <div className="mt-3 text-sm text-zinc-500">
-              По {selectedProduct.price.toFixed(2)} лв. за {selectedProduct.unit}
+              По {selectedProduct.price.toFixed(2)} EUR за {selectedProduct.unit}
             </div>
           </div>
 
@@ -116,7 +116,7 @@ export function ProductComparison({ annualDifference }: ProductComparisonProps) 
           {/* Custom Price Input */}
           <div>
             <label className="block text-sm text-zinc-400 mb-2">
-              Въведете цена на продукт (лв.)
+              Въведете цена на продукт (EUR)
             </label>
             <input
               type="number"
@@ -135,7 +135,7 @@ export function ProductComparison({ annualDifference }: ProductComparisonProps) 
                 {formatNumber(lostProducts)}
               </div>
               <div className="text-lg text-zinc-300">
-                продукта по {parseFloat(customPrice).toFixed(2)} лв.
+                продукта по {parseFloat(customPrice).toFixed(2)} EUR
               </div>
             </div>
           )}

@@ -7,8 +7,8 @@
 
   <!-- Money symbol with downward arrow -->
   <g transform="translate(32, 32)">
-    <!-- BGN lev symbol (лв) stylized -->
-    <text x="-10" y="8" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff">₾</text>
+    <!-- EUR symbol stylized -->
+    <text x="-10" y="8" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff">€</text>
 
     <!-- Downward arrow -->
     <path d="M 8 -8 L 8 6 L 12 2 M 8 6 L 4 2" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>

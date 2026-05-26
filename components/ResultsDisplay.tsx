@@ -43,7 +43,7 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
           </h2>
 
           <div className="text-5xl md:text-7xl font-black text-danger-500 animate-pulse-slow">
-            {formatCurrency(Math.abs(result.annualNetSalaryDifference))} лв.
+            {formatCurrency(Math.abs(result.annualNetSalaryDifference))} EUR
           </div>
 
           <div className="text-lg md:text-xl text-danger-300">
@@ -56,7 +56,7 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
                 Месечна загуба за служителя
               </p>
               <p className="text-3xl md:text-4xl font-bold text-danger-400 mt-2">
-                {formatCurrency(Math.abs(result.netSalaryDifference))} лв.
+                {formatCurrency(Math.abs(result.netSalaryDifference))} EUR
               </p>
             </div>
             <div>
@@ -64,7 +64,7 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
                 Годишна загуба за работодателя
               </p>
               <p className="text-3xl md:text-4xl font-bold text-orange-400 mt-2">
-                {formatCurrency(Math.abs(result.annualEmployerCostDifference))} лв.
+                {formatCurrency(Math.abs(result.annualEmployerCostDifference))} EUR
               </p>
             </div>
           </div>
@@ -80,10 +80,10 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
               2025 година
             </div>
             <div className="text-3xl font-bold text-green-400">
-              {formatCurrency(result.year2025.netSalary)} лв.
+              {formatCurrency(result.year2025.netSalary)} EUR
             </div>
             <div className="text-xs text-zinc-500">
-              Брутна: {formatCurrency(result.year2025.grossSalary)} лв.
+              Брутна: {formatCurrency(result.year2025.grossSalary)} EUR
             </div>
           </div>
         </div>
@@ -95,10 +95,10 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
               2026 година
             </div>
             <div className="text-3xl font-bold text-danger-500">
-              {formatCurrency(result.year2026.netSalary)} лв.
+              {formatCurrency(result.year2026.netSalary)} EUR
             </div>
             <div className="text-xs text-zinc-500">
-              Брутна: {formatCurrency(result.year2026.grossSalary)} лв.
+              Брутна: {formatCurrency(result.year2026.grossSalary)} EUR
             </div>
           </div>
         </div>
@@ -136,31 +136,31 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
                 <div className="font-semibold text-zinc-400 mb-3">2025 година</div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Пенсии (6.58%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2025.employeeContributions.pension)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2025.employeeContributions.pension)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">ОЗМ (1.4%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2025.employeeContributions.sickness)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2025.employeeContributions.sickness)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Безработица (0.4%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2025.employeeContributions.unemployment)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2025.employeeContributions.unemployment)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">ДЗПО (2.2%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2025.employeeContributions.supplementaryPension)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2025.employeeContributions.supplementaryPension)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Здравно (3.2%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2025.employeeContributions.health)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2025.employeeContributions.health)} EUR</span>
                 </div>
                 <div className="flex justify-between pt-2 border-t border-zinc-700">
                   <span className="text-white font-semibold">Общо осигуровки:</span>
-                  <span className="text-green-400 font-mono font-bold">{formatCurrency(result.year2025.totalEmployeeContributions)} лв.</span>
+                  <span className="text-green-400 font-mono font-bold">{formatCurrency(result.year2025.totalEmployeeContributions)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-white font-semibold">Данък (10%):</span>
-                  <span className="text-green-400 font-mono font-bold">{formatCurrency(result.year2025.incomeTax)} лв.</span>
+                  <span className="text-green-400 font-mono font-bold">{formatCurrency(result.year2025.incomeTax)} EUR</span>
                 </div>
               </div>
 
@@ -169,31 +169,31 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
                 <div className="font-semibold text-danger-400 mb-3">2026 година</div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Пенсии (7.47%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2026.employeeContributions.pension)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2026.employeeContributions.pension)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">ОЗМ (1.4%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2026.employeeContributions.sickness)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2026.employeeContributions.sickness)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Безработица (0.4%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2026.employeeContributions.unemployment)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2026.employeeContributions.unemployment)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">ДЗПО (2.2%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2026.employeeContributions.supplementaryPension)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2026.employeeContributions.supplementaryPension)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Здравно (3.2%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2026.employeeContributions.health)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2026.employeeContributions.health)} EUR</span>
                 </div>
                 <div className="flex justify-between pt-2 border-t border-zinc-700">
                   <span className="text-white font-semibold">Общо осигуровки:</span>
-                  <span className="text-danger-400 font-mono font-bold">{formatCurrency(result.year2026.totalEmployeeContributions)} лв.</span>
+                  <span className="text-danger-400 font-mono font-bold">{formatCurrency(result.year2026.totalEmployeeContributions)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-white font-semibold">Данък (10%):</span>
-                  <span className="text-danger-400 font-mono font-bold">{formatCurrency(result.year2026.incomeTax)} лв.</span>
+                  <span className="text-danger-400 font-mono font-bold">{formatCurrency(result.year2026.incomeTax)} EUR</span>
                 </div>
               </div>
             </div>
@@ -210,37 +210,37 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
                 <div className="font-semibold text-zinc-400 mb-3">2025 година</div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Пенсии (8.22%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.pension)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.pension)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">ОЗМ (2.1%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.sickness)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.sickness)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Безработица (0.6%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.unemployment)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.unemployment)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">ДЗПО (2.8%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.supplementaryPension)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.supplementaryPension)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">ТЗПБ (0.4%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.occupationalAccidents)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.occupationalAccidents)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Здравно (4.8%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.health)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2025.employerContributions.health)} EUR</span>
                 </div>
 
                 <div className="flex justify-between pt-2 border-t border-zinc-700">
                   <span className="text-white font-semibold">Общо осигуровки:</span>
-                  <span className="text-green-400 font-mono font-bold">{formatCurrency(result.year2025.totalEmployerContributions)} лв.</span>
+                  <span className="text-green-400 font-mono font-bold">{formatCurrency(result.year2025.totalEmployerContributions)} EUR</span>
                 </div>
 
                 <div className="flex justify-between pt-2 border-t border-zinc-700">
                   <span className="text-white font-semibold">Общо разходи:</span>
-                  <span className="text-blue-400 font-mono font-bold">{formatCurrency(result.year2025.totalEmployerCost)} лв.</span>
+                  <span className="text-blue-400 font-mono font-bold">{formatCurrency(result.year2025.totalEmployerCost)} EUR</span>
                 </div>
               </div>
 
@@ -249,37 +249,37 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
                 <div className="font-semibold text-danger-400 mb-3">2026 година</div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Пенсии (9.33%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.pension)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.pension)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">ОЗМ (2.1%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.sickness)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.sickness)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Безработица (0.6%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.unemployment)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.unemployment)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">ДЗПО (2.8%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.supplementaryPension)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.supplementaryPension)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">ТЗПБ (0.4%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.occupationalAccidents)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.occupationalAccidents)} EUR</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-400">Здравно (4.8%):</span>
-                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.health)} лв.</span>
+                  <span className="text-white font-mono">{formatCurrency(result.year2026.employerContributions.health)} EUR</span>
                 </div>
 
                 <div className="flex justify-between pt-2 border-t border-zinc-700">
                   <span className="text-white font-semibold">Общо осигуровки:</span>
-                  <span className="text-danger-400 font-mono font-bold">{formatCurrency(result.year2026.totalEmployerContributions)} лв.</span>
+                  <span className="text-danger-400 font-mono font-bold">{formatCurrency(result.year2026.totalEmployerContributions)} EUR</span>
                 </div>
 
                 <div className="flex justify-between pt-2 border-t border-zinc-700">
                   <span className="text-white font-semibold">Общо разходи:</span>
-                  <span className="text-danger-400 font-mono font-bold">{formatCurrency(result.year2026.totalEmployerCost)} лв.</span>
+                  <span className="text-danger-400 font-mono font-bold">{formatCurrency(result.year2026.totalEmployerCost)} EUR</span>
                 </div>
               </div>
             </div>
@@ -289,10 +289,10 @@ export function ResultsDisplay({ result, onReset }: ResultsDisplayProps) {
               <div className="text-center">
                 <p className="text-sm text-zinc-400">Увеличение на разходите за работодател</p>
                 <p className="text-2xl font-bold text-danger-400 mt-1">
-                  +{formatCurrency(result.employerCostDifference)} лв./месец
+                  +{formatCurrency(result.employerCostDifference)} EUR/месец
                 </p>
                 <p className="text-sm text-danger-500 mt-1">
-                  Годишно: +{formatCurrency(result.annualEmployerCostDifference)} лв.
+                  Годишно: +{formatCurrency(result.annualEmployerCostDifference)} EUR
                 </p>
               </div>
             </div>

@@ -15,7 +15,7 @@ export interface TaxConfig {
   /** Year for which this configuration applies */
   year: number;
 
-  /** Maximum insurable income (Максимален осигурителен доход) in BGN */
+  /** Maximum insurable income (Максимален осигурителен доход) in EUR */
   maxInsurableIncome: number;
 
   /** Employee contributions (as decimal, e.g., 0.0658 for 6.58%) */
@@ -112,7 +112,7 @@ export interface SalaryComparisonResult {
  */
 const TAX_CONFIG_2025: TaxConfig = {
   year: 2025,
-  maxInsurableIncome: 4130,
+  maxInsurableIncome: 2111.46,
   employee: {
     pension: 0.0658,
     sickness: 0.014,
@@ -133,16 +133,16 @@ const TAX_CONFIG_2025: TaxConfig = {
 
 const TAX_CONFIG_2026: TaxConfig = {
   year: 2026,
-  maxInsurableIncome: 4600,
+  maxInsurableIncome: 2300,
   employee: {
-    pension: 0.0658 + 0.0089, // 6.58% + 0.89% increase = 7.47%
+    pension: 0.0658, // 6.58% + 0.89% increase = 7.47%
     sickness: 0.014,
     unemployment: 0.004,
     supplementaryPension: 0.022,
     health: 0.032,
   },
   employer: {
-    pension: 0.0822 + 0.0111, // 8.22% + 1.11% increase = 9.33% for 2026
+    pension: 0.0822, // 8.22% + 1.11% increase = 9.33% for 2026
     sickness: 0.021,
     unemployment: 0.006,
     supplementaryPension: 0.028,
