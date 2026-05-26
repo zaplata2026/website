@@ -18,16 +18,16 @@ interface Product {
  * Common Bulgarian products for comparison
  */
 const PRODUCTS: Product[] = [
-  { name: 'Хляб', emoji: '🍞', price: 1.02, unit: 'хляб' },
-  { name: 'Мляко', emoji: '🥛', price: 1.59, unit: 'литър' },
-  { name: 'Кафе', emoji: '☕', price: 1.28, unit: 'кафе' },
-  { name: 'Яйца', emoji: '🥚', price: 0.15, unit: 'яйце' },
-  { name: 'Бензин', emoji: '⛽', price: 1.33, unit: 'литър' },
-  { name: 'Козунак', emoji: '🥖', price: 4.09, unit: 'козунак' },
-  { name: 'Айрян', emoji: '🥤', price: 1.28, unit: 'бутилка' },
-  { name: 'Месо свинско', emoji: '🥩', price: 5.73, unit: 'кг' },
-  { name: 'Картофи', emoji: '🥔', price: 1.02, unit: 'кг' },
-  { name: 'Домати', emoji: '🍅', price: 2.20, unit: 'кг' },
+  { name: 'Хляб', emoji: '🍞', price: 1.20, unit: 'хляб' },
+  { name: 'Мляко', emoji: '🥛', price: 1.85, unit: 'литър' },
+  { name: 'Кафе', emoji: '☕', price: 2.00, unit: 'кафе' },
+  { name: 'Яйца', emoji: '🥚', price: 0.30, unit: 'яйце' },
+  { name: 'Бензин', emoji: '⛽', price: 1.55, unit: 'литър' },
+  { name: 'Козунак', emoji: '🥖', price: 3.50, unit: 'козунак' },
+  { name: 'Айрян', emoji: '🥤', price: 1.40, unit: 'бутилка' },
+  { name: 'Месо свинско', emoji: '🥩', price: 6.50, unit: 'кг' },
+  { name: 'Картофи', emoji: '🥔', price: 0.80, unit: 'кг' },
+  { name: 'Домати', emoji: '🍅', price: 3.00, unit: 'кг' },
 ];
 
 /**
